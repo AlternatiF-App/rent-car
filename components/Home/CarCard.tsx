@@ -1,13 +1,22 @@
+'use client'
+
 import Image from 'next/image'
 import { PiSteeringWheelFill } from 'react-icons/pi'
 import { MdAirlineSeatReclineNormal } from 'react-icons/md'
 import { FaGasPump } from 'react-icons/fa'
 import { BsArrowRight } from 'react-icons/bs'
+import { useEffect, useState } from 'react'
 
 const CarCard = (props: any) => {
-  const car = props.car
+  const [car, setCar] = useState(props.car)
 
-  return (
+  useEffect(() => {
+    if (props.car) {
+      setCar(props.car )
+    }
+  }, [props.car])
+
+  return car && (
     <div className='group bg-gray-50 p-2 sm:p-6 rounded-3xl m-1 sm:m-6 hover:bg-white hover:border-[1px] cursor-pointer duration-50 border-blue-500'>
       <h2 className='text-xl font-medium mb-2'>
         { car.name }

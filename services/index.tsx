@@ -16,6 +16,7 @@ export const getCarsList = async () => {
         image {
           url
         }
+        carBrand
       }
     }
   `
