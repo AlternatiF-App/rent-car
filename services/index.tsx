@@ -12,6 +12,10 @@ export const getCarsList = async () => {
         publishedAt
         seat
         updatedAt
+        carType
+        image {
+          url
+        }
       }
     }
   `

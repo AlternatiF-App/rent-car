@@ -1,6 +1,7 @@
 'use client'
 
 import CarsFiltersOption from '@/components/Home/CarsFiltersOption'
+import CarsList from '@/components/Home/CarsList'
 import Hero from '@/components/Home/Hero'
 import SearchInput from '@/components/Home/SearchInput'
 import { getCarsList } from '@/services'
@@ -24,6 +25,7 @@ const Home = () => {
       <Hero/>
       <SearchInput/>
       <CarsFiltersOption/>
+      <CarsList carsList={carsList} />
     </div>
   )
 }
