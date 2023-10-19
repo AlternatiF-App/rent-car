@@ -1,13 +1,46 @@
-import CarCard from "./CarCard"
+'use client'
+
+import { useEffect, useState } from 'react'
+import CarCard from './CarCard'
+import CarCardSkelton from './CarCardSkeleton'
+import BookingModal from '../CarBooking/BookingModal'
 
 const CarsList = (props: any) => {
+  const [isLoaded,setIsLoaded] = useState(true)
+  const [selectedCar,setSelectedCar] = useState<any>([]);
+
+  useEffect(()=>{
+    if (props.carsList) {
+      setIsLoaded(false)
+    }
+  },[props.carsList])
+
   return (
     <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>
       {
-        props.carsList.map((car:any, index:number) => (
-          <CarCard key={index} car={car} />
+        !isLoaded && props.carsList.map((car:any, index:number) => (
+          <div key={index}
+            onClick={() => {
+              (window as any).my_modal_4.showModal()
+              setSelectedCar(car)
+            }}
+          >
+            <CarCard car={car} />
+          </div>
         ))
       }
+
+      {
+        isLoaded
+          ? [1,2,3,4,5].map(() => (
+              <CarCardSkelton/>  
+            ))
+          : null
+      }
+
+      <dialog id='my_modal_4' className='modal'>
+        <BookingModal car={selectedCar} />
+      </dialog>
     </div>
   )
 }
