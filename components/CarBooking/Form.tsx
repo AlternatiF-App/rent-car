@@ -4,6 +4,7 @@ import { useUser } from '@clerk/nextjs'
 import React, { useContext, useEffect, useState } from 'react'
 
 const Form = ({ car }: any) => {
+  const { user } = useUser()
   const [storeLocation, setStoreLocation] = useState<any>([])
   const {showToastMsg, setShowToastMsg} = useContext(BookCreatedFlagContext)
 
@@ -14,7 +15,7 @@ const Form = ({ car }: any) => {
     pickUpTime:'',
     dropOffTime:'',
     contactNumber:'',
-    userName:'ahmad fanani',
+    userName: user?.fullName,
     carId: ''
   })
 

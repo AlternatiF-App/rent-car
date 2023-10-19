@@ -51,7 +51,8 @@ export const createBooking = async (formValue:any) => {
           dropOffTime: "`+formValue.dropOffTime+`",
           pickUpDate: "`+formValue.pickUpDate+`",
           pickUpTime: "`+formValue.pickUpTime+`",
-          userName: "`+formValue.userName+`"
+          userName: "`+formValue.userName+`",
+          location: "`+formValue.location+`"
         }
       ) {
         id
